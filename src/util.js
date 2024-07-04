@@ -1,5 +1,10 @@
 const inquirer = require('inquirer');
 const { takeTurn, endRound } = require('./round');
+const { createDeck } = require('./deck');
+const { createRound } = require('./round');
+const data = require('./data');
+const prototypeQuestions = data.prototypeData;
+
 
 const genList = (round) => {
   let card = round.currentCard;
@@ -36,7 +41,11 @@ async function main(round) {
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
 
     if(!round.currentCard) {
-      endRound(round);
+      if(endRound(round)){
+        const deck = createDeck(prototypeQuestions)
+        const round = createRound(deck)
+        main(round)
+      } 
     } else {
       main(round);
     }

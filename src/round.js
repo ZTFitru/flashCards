@@ -6,7 +6,7 @@ const createRound = (deck) => {
         currentCard: deck.cards[0],
         turns: 0,
         incorrectGuesses: []
-    }
+    };
     return round;
 };
 
@@ -21,9 +21,9 @@ const takeTurn = (guess, round) => {
     } else {
         round.currentCard = round.deck.cards[round.turns];
         return feedBack;
-    }
+    };
     
-}
+};
 
 const calculatePercentCorrect = (round) => {
     
@@ -34,9 +34,15 @@ const calculatePercentCorrect = (round) => {
 
 const endRound = (round) => {
     const total = calculatePercentCorrect(round);
-    const endRoundMessage = `**Round over!** You answered ${total}% of the questions correctly!`;
-    return endRoundMessage;
-}
+    if(total < 90) {
+      console.log(`**Round over!** \n You answered ${total}% of the questions correctly!`);
+      return true
+    }
+    else {
+      console.log(`**Round over!** You answered ${total}% of the questions correctly!`)
+      return false
+    }
+  }
 
 module.exports = { 
     createRound, 
