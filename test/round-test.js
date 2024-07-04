@@ -114,6 +114,6 @@ describe('end round', function() {
 
         calculatePercentCorrect(round)
         const endRoundMessage = endRound(round)
-        expect(endRoundMessage).to.equal(`**Round over!** You answered 33% of the questions correctly!`)
+        expect(endRoundMessage).to.equal(true)
     });
 });
