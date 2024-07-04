@@ -1,22 +1,14 @@
 
-const createCard = (id, question, answers, correctAnswer) => {
-    return {
+
+const createCard = (id, question, possibleAnswers, correctAnswer) => {
+    const card = {
         id: id,
         question: question,
-        answers: answers,
+        possibleAnswers: possibleAnswers,
         correctAnswer: correctAnswer
     }
-}
-
-const evaluateGuess = (guess, correctAnswer) => {
-    if(guess === correctAnswer) {
-        return 'correct!'
-    }
-    else {
-        return 'incorrect!'
-    }
+    return card;
 }
 
 
-
-module.exports = { createCard, evaluateGuess }
+module.exports = { createCard }
